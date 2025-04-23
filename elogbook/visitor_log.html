@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visitor E-Logbook</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>DILG ZAMBOANGA DEL SUR</h1>
+      <h2>Visitor E-Logbook</h2>
+    </header>
+    <div id="privacy-popup" class="popup">
+        <div class="popup-content">  
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+                <button id="english-btn" class="active">English</button>
+                <button id="tagalog-btn">Tagalog</button>
+            </div>
+    
+            <!-- English Version -->
+            <div id="english-content">
+                <div class="logo-container">
+                    <img src="img/lgprc.png" alt="Logo 1">
+                    <img src="img/dilg.png" alt="Logo 2">
+                  </div>
+                                  <h2>Data Privacy Statement</h2>
+                                  <p>As part of DILG Zamboanga del Sur’s commitment to transparency, accountability, and efficient service delivery, we ensure that all personal and sensitive information—such as names, agency or office, e-signatures, and photos—provided through our e-logbook system are handled with the utmost care and confidentiality. These details are collected solely for identification and documentation purposes in line with our official duties.</p>
+                                  <p>By accessing the DILG Zamboanga del Sur e-logbook and submitting your information, you acknowledge and consent that your data may be processed and used in accordance with the “Data Privacy Act of 2012” and other applicable laws. We are committed to protecting your information from unauthorized access or misuse, ensuring it is securely managed at all times.</p>
+                                   <button id="accept-btn">I AGREE</button>
+            </div>
+    
+            <!-- Tagalog Version -->
+            <div id="tagalog-content" style="display: none;">
+              <div class="logo-container">
+                <img src="img/lgprc.png" alt="Logo 1">
+                <img src="img/dilg.png" alt="Logo 2">
+              </div>
+                                  <h2>Paunawa sa Privacy</h2>
+                                  <p>Bilang bahagi ng layunin ng DILG Zamboanga del Sur na maging bukas, responsable, at epektibo sa pagbibigay ng serbisyo, sinisiguro namin na ang lahat ng personal at sensitibong impormasyong ibinibigay sa aming e-logbook system—tulad ng pangalan, opisina, e-pirma, at larawan—ay pinangangalagaan nang may lubos na pag-iingat at pagiging kumpidensyal. Ang mga impormasyong ito ay kinokolekta lamang para sa layunin ng pagkakakilanlan at dokumentasyon, ayon sa aming mandato.</p>
+                                  <p>Sa pag-access at pagsusumite ng impormasyon sa e-logbook ng DILG Zamboanga del Sur, ikaw ay nagbibigay ng pahintulot na gamitin at iproseso ang iyong datos alinsunod sa “Data Privacy Act of 2012” at iba pang umiiral na batas. Nangangako kami na ang iyong impormasyon ay mananatiling ligtas at hindi magagamit sa maling paraan o ng walang awtorisasyon.</p>
+                                  <button id="accept-btn-tagalog">SANG-AYON AKO</button>
+            </div>
+        </div>
+    </div>
+
+    <form id="elogbookForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="agency">Agency/Office</label>
+        <input type="text" id="agency" name="agency" placeholder="Enter your agency or office" required />
+      </div>
+
+      <div class="form-group">
+        <label for="position">Position</label>
+        <input type="text" id="position" name="position" placeholder="Enter your position" required />
+      </div>
+
+      <div class="form-group">
+        <label for="purpose">Purpose</label>
+        <textarea id="purpose" name="purpose" placeholder="State your purpose" rows="3" required></textarea>
+      </div>
+
+<!-- Inside your form -->
+<div class="form-group">
+    <label>Confirmation Method</label>
+    <div class="switch-group">
+      <button type="button" class="toggle-btn" onclick="selectMethod('signature')">Signature</button>
+      <button type="button" class="toggle-btn" onclick="selectMethod('photo')">Take Photo</button>
+    </div>
+  </div>
+  
+  <!-- Signature Section (hidden by default) -->
+  <div class="form-group hidden" id="signatureSection">
+    <label>Draw Signature</label>
+    <canvas id="signatureCanvas" width="300" height="150"></canvas>
+    <button type="button" onclick="clearCanvas()">Clear</button>
+  </div>
+  
+  <!-- Photo Section (hidden by default) -->
+  <div class="form-group hidden" id="photoSection">
+    <label>Take a Photo</label>
+    <video id="video" autoplay playsinline></video>
+    <button type="button" onclick="captureImage()">Capture</button>
+    <canvas id="photoCanvas" width="300" height="225"></canvas>
+  </div>
+  
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
